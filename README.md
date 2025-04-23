@@ -1,7 +1,54 @@
 <<<<<<< HEAD
-# Tp5
+# TP Angular : Templates, Bindings et Directives
+
+**Nom** : Salwa Elghailani  
+**Master** : Master DevOps et Cloud Computing  
+**Année Universitaire** : 2024/2025
+
+---
+# Structure de projet TP-Angular-ElghailaniSalwa 
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+
+## Composants :
+      - CatalogComponent : Affiche la liste des produits filtrés.
+      - ProductDetailsComponent : Affiche les détails d'un produit sélectionné.
+## Services :
+      - ProductService : Gère la récupération des produits .
+## Modèles :
+      - Product : Interface ou classe définissant les propriétés d'un produit (id, nom, prix, quantité, etc.).
+
+# Fonctionnalités Implémentées
+## Affichage des Produits :
+      Liste filtrée des produits avec quantité > 0 (utilise *ngFor et un filtre dans le composant).
+## Style Conditionnel :
+     Les produits avec quantité < 10 ont un fond rouge
+## Détails des Produits :
+      Un bouton "Détails" déclenche l'affichage du composant ProductDetailsComponent.
+# Captures d'Écran :
+## Liste des Produits :
+![alt text](public/assets/images/ListeProduit.png)
+## Détails d'un Produit :
+![alt text](public/assets/images/DétailsProduit.png)
+## Style Conditionnel (Quantité < 10) :
+![alt text](public/assets/images/ListeProduitConditionnel.png)
+# Notes Supplémentaires :
+Code Propre : Respect des conventions Angular (components/services séparés, utilisation de async pour les données).
+
+Test : Vérifié avec "ng test" et "ng lint".
+
+Dépendances : Aucune dépendance externe supplémentaire requise.
+
+
+
+
+
+
+
+
+
+
+
 
 ## Development server
 
