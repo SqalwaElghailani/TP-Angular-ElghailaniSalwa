@@ -1,0 +1,25 @@
+<div class="catalog">
+    <h2>La liste des Produits</h2>
+    <div class="product-list">
+      @for (product of products; track product.id) {
+        <div class="product-card" [class]="getQuantityClass(product.quantity)">
+            <img [src]="product.imageUrl || '/assets/images/default-product.png'"
+            [alt]="product.name"
+            class="product-image"
+            (error)="handleImageError($event)">
+          <div class="product-info">
+            <h3>{{product.name}}</h3>
+            <p class="price">{{product.price | currency:'EUR':'symbol':'1.2-2'}}</p>
+           <!-- <p class="quantity" [style.color]="product.quantity < 10 ? 'red' : 'green'">
+              Stock: {{product.quantity}}
+            </p> -->
+            <button (click)="viewDetails(product.id)">Voir détails</button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+  
+  @if (selectedProductId) {
+    <app-product-details [productId]="selectedProductId"></app-product-details>
+  }
