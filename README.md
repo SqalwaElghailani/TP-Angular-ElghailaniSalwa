@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # TP Angular : Templates, Bindings et Directives
 
 **Nom** : Salwa Elghailani  
@@ -105,6 +105,3 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-=======
-# TP-Angular-ElghailaniSalwa
->>>>>>> e3bb3015438a26e4c09a82ada94693b18f77e7b1
