@@ -20,7 +20,10 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.productId) {
-      this.product = this.productService.getProductById(this.productId);
+      this.productService.getProductById(this.productId).subscribe(
+        product =>this.product = product,
+        error => console.error('Erreur :',error)
+      );
     }
   }
 }
