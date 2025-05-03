@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CatalogComponent } from '../catalog/catalog.component';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { ProductService } from './services/product.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
