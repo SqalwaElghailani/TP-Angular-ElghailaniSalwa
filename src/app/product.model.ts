@@ -7,10 +7,12 @@ import { CatalogComponent } from '../catalog/catalog.component';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { ProductService } from './services/product.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from '../home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     CatalogComponent,
     ProductDetailsComponent
  ],
