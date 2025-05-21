@@ -1,9 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { CurrencyPipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Product } from '../app/models/product.model';
 import { ProductService } from '../app/services/product.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -13,16 +12,21 @@ import { ProductService } from '../app/services/product.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  @Input() productId!: number;
   product?: Product;
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
-    if (this.productId) {
-      this.productService.getProductById(this.productId).subscribe(
-        product =>this.product = product,
-        error => console.error('Erreur :',error)
+    const idParam = this.route.snapshot.paramMap.get('id');
+    const productId = idParam ? +idParam : null;
+
+    if (productId !== null) {
+      this.productService.getProductById(productId).subscribe(
+        product => this.product = product,
+        error => console.error('Erreur :', error)
       );
     }
   }
