@@ -11,13 +11,10 @@
         <div class="product-info">
           <h3>{{ product.name }}</h3>
           <p class="price">{{ product.price | currency:'MAD ' }}</p>
-          <button (click)="viewDetails(product.id)">Voir détails</button>
+          <button [routerLink]="['/product-details', product.id]">Voir détails</button>
         </div>
       </div>
     }
   </div>
 </div>
 
-@if (selectedProductId) {
-  <app-product-details [productId]="selectedProductId"></app-product-details>
-}
