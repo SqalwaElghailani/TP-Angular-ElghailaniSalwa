@@ -1,0 +1,12 @@
+<h2>Créer un compte</h2>
+<form (ngSubmit)="onSignup()" #signupForm="ngForm">
+  <input type="text" name="firstName" [(ngModel)]="firstName" placeholder="Prénom" required>
+  <input type="text" name="lastName" [(ngModel)]="lastName" placeholder="Nom" required>
+  <input type="email" name="email" [(ngModel)]="email" placeholder="Email" required>
+  <input type="password" name="password" [(ngModel)]="password" placeholder="Mot de passe" required>
+  <button type="submit">S'inscrire</button>
+</form>
+
+<p *ngIf="errorMessage" style="color: red">{{ errorMessage }}</p>
+<p *ngIf="successMessage" style="color: green">{{ successMessage }}</p>
+
