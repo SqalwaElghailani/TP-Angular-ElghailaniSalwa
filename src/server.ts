@@ -60,6 +60,22 @@ if (isMainModule(import.meta.url)) {
   });
 }
 
+
+
+export function getPrerenderParams(route: string) {
+  if (route === 'product-details/:id') {
+    
+    return [
+      { id: '1' },
+      { id: '2' },
+      { id: '3' },
+      { id: '4' }
+    ];
+  }
+  return [];
+}
+
+
 /**
  * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
  */
