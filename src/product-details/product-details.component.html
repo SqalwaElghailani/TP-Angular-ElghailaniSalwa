@@ -1,19 +1,20 @@
-@if (product) {
-    <div class="product-details"  [style.color]="product.quantity < 10 ? 'red' : 'noir'">
-      <h2>Détails du produit</h2>
-      <div class="detail-card">
-        <img [src]="product.imageUrl || 'assets/default-product.png'" alt="{{product.name}}" class="detail-image">
-        <div class="detail-info">
-          <h3>{{product.name}}</h3>
-          <p class="description">{{product.description}}</p>
-          <p class="price">{{product.price | currency:'EUR':'symbol':'1.2-2'}}</p>
-          <p class="quantity"  [style.color]="product.quantity < 10 ? 'red' : 'green'">
-            Stock: {{product.quantity}}
-          </p>
-          
-          <button >Acheter</button>
-        </div>
-        
-      </div>
+<div *ngIf="product" class="product-details" [style.color]="product.quantity < 10 ? 'red' : 'black'">
+  
+  <div class="detail-card">
+    <img [src]="product.imageUrl || 'assets/default-product.png'" alt="{{product.name}}" class="detail-image">
+    <div class="detail-info">
+      <h3>{{ product.name }}</h3>
+      <p class="description">{{ product.description }}</p>
+      <p><strong>Auteur :</strong> {{ product.author }}</p>
+      <p><strong>Genre :</strong> {{ product.genre }}</p>
+      <p><strong>Note :</strong> {{ product.rating }}</p>
+      <p><strong>Nombre de chapitres :</strong> {{ product.chapters }}</p>
+      <p class="full-summary">{{ product.fullSummary }}</p>
+      <p class="price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+      <p class="quantity" [style.color]="product.quantity < 10 ? 'red' : 'green'">
+        Stock : {{ product.quantity }}
+      </p>
+      <button i18n>Acheter</button>
     </div>
-  }
+  </div>
+</div>
