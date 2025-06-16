@@ -3,11 +3,12 @@ import { Component, Input, OnInit, Inject } from '@angular/core';
 import { CardService } from '../app/services/card.service';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })

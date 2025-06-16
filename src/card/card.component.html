@@ -29,8 +29,8 @@
     <div class="product-card" *ngFor="let item of cartProducts">
 
       <!-- ✅ Image with Hover Summary -->
-      <div class="product-image">
-        <img [src]="'assets/' + (item.imageUrl || 'default-product.png')" [alt]="item.name" />
+      <div class="product-image" [routerLink]="['/product-details', item.id]" >
+      <img [src]="item.imageUrl ? 'assets/images/' + item.imageUrl : 'assets/default-product.png'" alt="{{item.name}}" />
         <div class="image-hover-summary">
           {{ item.description }}
         </div>
@@ -49,13 +49,12 @@
             </span>
           </div>
 
-          <div class="stock" [ngClass]="{ 'low-stock': item.quantityStock < 10 }">
-            Stock: {{ item.quantityStock }}
+          <div class="stock" [ngClass]="{ 'low-stock': item.quantity < 10 }">
+            Stock: {{ item.quantity}}
           </div>
         </div>
 
         <p>📅 Added on: {{ item.date | date:'medium' }}</p>
-        <p>🛒 Quantity: 1</p>
       </div>
 
     </div>
