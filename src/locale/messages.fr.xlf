@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="3782598945742573357" datatype="html">
+        <source>La liste des Produits</source>
+        <target>Product List</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/catalog/catalog.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6238982061557878341" datatype="html">
+        <source>Bonjour!</source>
+        <target>Hello!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/home/home.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1048895743677949299" datatype="html">
+        <source>Détails du produit</source>
+        <target>Product Details</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/product-details/product-details.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3000503124039226277" datatype="html">
+        <source>Acheter</source>
+        <target>Buy</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/product-details/product-details.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
