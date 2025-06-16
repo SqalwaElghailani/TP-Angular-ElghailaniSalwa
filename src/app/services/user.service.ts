@@ -1,7 +1,7 @@
 // user.service.ts
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, BehaviorSubject, of } from 'rxjs';
+import { Observable, catchError, map, BehaviorSubject, of, throwError } from 'rxjs';
 import { SafeUser, User } from '../models/user.model';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -30,25 +30,22 @@ export class UserService {
     }
   }
 
-  signIn(email: string, password: string): Observable<SafeUser | null> {
-    return this.http.post<User>(this.apiUrl, { email, password }).pipe(
-      map(user => {
-        const safeUser: SafeUser = {
-          firstName: user.firstName,
-          lastName: user.lastName,
-          email: user.email
-        };
-
-        if (this.isBrowser) {
-          localStorage.setItem('currentUser', JSON.stringify(safeUser));
-        }
-
-        this.currentUserSubject.next(safeUser);
-        return safeUser;
-      }),
+ // في user.service.ts
+ signIn(email: string, password: string) {
+    return this.http.post<any>('http://localhost:3000/api/signin', 
+      { 
+        email: email.trim(), 
+        password: password 
+      },
+      {
+        headers: { 'Content-Type': 'application/json' }
+      }
+    ).pipe(
       catchError(error => {
-        console.error('Erreur de connexion:', error);
-        return of(null);
+        console.error('Login error:', error);
+        // تمرير رسالة الخطأ من الخادم إذا وجدت
+        const errorMsg = error.error?.message || error.message || 'Login failed';
+        return throwError(() => new Error(errorMsg));
       })
     );
   }
