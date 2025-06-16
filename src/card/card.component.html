@@ -1,0 +1,63 @@
+<!-- ✅ SHOPPING CART - Styled Consistently -->
+<div class="cart-container">
+
+  <!-- ✅ Loading State -->
+  <div *ngIf="isLoading" class="top-banner loading-banner">
+    <div class="top-banner-overlay">
+      <div class="top-banner-content">
+        <div class="right-side">
+          <h2>⏳ Loading your cart...</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Empty Cart State -->
+  <div *ngIf="!isLoading && cartProducts.length === 0" class="top-banner empty-banner">
+    <div class="top-banner-overlay">
+      <div class="top-banner-content">
+        <div class="right-side">
+          <h2>🛒 Your cart is empty</h2>
+          <p>Please add some products to see them here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Cart Items -->
+  <div *ngIf="!isLoading && cartProducts.length > 0" class="products-grid">
+    <div class="product-card" *ngFor="let item of cartProducts">
+
+      <!-- ✅ Image with Hover Summary -->
+      <div class="product-image">
+        <img [src]="'assets/' + (item.imageUrl || 'default-product.png')" [alt]="item.name" />
+        <div class="image-hover-summary">
+          {{ item.description }}
+        </div>
+      </div>
+
+      <!-- ✅ Product Info -->
+      <div class="product-info">
+        <h3 class="product-title">{{ item.name }}</h3>
+
+        <div class="product-meta">
+          <div class="price">
+            <span class="current-price">{{ item.price | currency:'EUR' }}</span>
+            <span *ngIf="item.oldPrice" class="old-price">{{ item.oldPrice | currency:'EUR' }}</span>
+            <span *ngIf="item.oldPrice" class="discount">
+              -{{ getDiscount(item.oldPrice, item.price) }}%
+            </span>
+          </div>
+
+          <div class="stock" [ngClass]="{ 'low-stock': item.quantityStock < 10 }">
+            Stock: {{ item.quantityStock }}
+          </div>
+        </div>
+
+        <p>📅 Added on: {{ item.date | date:'medium' }}</p>
+        <p>🛒 Quantity: 1</p>
+      </div>
+
+    </div>
+  </div>
+</div>
