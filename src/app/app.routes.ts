@@ -3,17 +3,22 @@ import { CatalogComponent } from "../catalog/catalog.component";
 import { ProductDetailsComponent } from "../product-details/product-details.component";
 import { SigninComponent } from "../signin/signin.component";
 import { HomeComponent } from '../home/home.component';
+import { SignupComponent } from '../signup/signup.component';
+import { CardComponent } from '../card/card.component';
 
 export const routes: Routes = [
     {path : 'home', component : HomeComponent, title: 'My Catalog products'},
     {path : 'Catalog', component : CatalogComponent, title: 'My Catalog products'},
+    {path : 'card', component : CardComponent, title: 'My Card'},
     {path: 'product-details/:id',
   component: ProductDetailsComponent,
   title: 'Product details'
 },
 
+
    
     {path : 'signin', component : SigninComponent, title: 'My signin page'},
+    {path : 'signup', component : SignupComponent, title: 'My signin page'},
     {path : '', redirectTo : '/home', pathMatch : 'full'},
     
 
