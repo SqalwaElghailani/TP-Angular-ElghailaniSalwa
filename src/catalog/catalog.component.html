@@ -1,20 +1,78 @@
-<div class="catalog">
-  <h2>La liste des Produits</h2>
-  <div class="product-list">
-    @for (product of products; track product.id) {
-      <div class="product-card" [class.low-quantity]="product.quantity < 10">
-        <img 
-          [src]="product.imageUrl" 
-          [alt]="product.name"
-          (error)="handleImageError($event)"
-          class="product-image">
-        <div class="product-info">
-          <h3>{{ product.name }}</h3>
-          <p class="price">{{ product.price | currency:'MAD ' }}</p>
-          <button [routerLink]="['/product-details', product.id]">Voir détails</button>
+<!-- PRODUITS RECOMMANDÉS - FULL BACKGROUND -->
+<div 
+  class="top-banner"
+  *ngIf="topProducts.length > 0"
+  [ngStyle]="{
+    'background-image': 'url(' + (topProducts[activeTopIndex].imageUrl || 'assets/default-product.png') + ')'
+  }"
+>
+  <div class="top-banner-overlay">
+    <div class="top-banner-content">
+      <!-- Image sur la gauche -->
+      <div class="left-side">
+        <img [src]="topProducts[activeTopIndex].imageUrl || 'assets/default-product.png'" alt="Manga" />
+      </div>
+
+      <!-- Infos à droite -->
+      <div class="right-side">
+        <h2>{{ topProducts[activeTopIndex].name }}</h2>
+        <p class="genre">Type: {{ topProducts[activeTopIndex].genre }}</p>
+        <p class="summary">{{ topProducts[activeTopIndex].description }}</p>
+        <p class="price">
+          {{ topProducts[activeTopIndex].price | currency:'EUR' }}
+        </p>
+
+        <div class="navigation-buttons">
+          <button class="nav-btn" (click)="prevTopProduct()">⬅ Back</button>
+          <button class="nav-btn" (click)="nextTopProduct()">Next ➡</button>
         </div>
       </div>
-    }
+    </div>
   </div>
 </div>
 
+
+
+
+
+
+<div class="products-grid">
+  <div class="product-card" *ngFor="let product of products" >
+
+  
+
+    <!-- Image + Hover Summary -->
+    <div class="product-image" [routerLink]="['/product-details', product.id]">
+      <img [src]="product.imageUrl || 'assets/default-product.png'" [alt]="product.name">
+
+      <!-- Overlay داخل الصورة فقط -->
+      <div class="image-hover-summary">
+        {{ product.description }}
+      </div>
+    </div>
+
+    <!-- باقي المعلومات تظل ظاهرة -->
+    <div class="product-info">
+      <h3 class="product-title">{{ product.name }}</h3>
+
+      <div class="product-meta">
+       
+        <div class="price">
+        <span class="current-price">{{ product.price | currency:'EUR' }}</span>
+        <span *ngIf="product.oldPrice" class="old-price">{{ product.oldPrice | currency:'EUR' }}</span>
+        <span *ngIf="product.oldPrice" class="discount">
+          -{{ getDiscount(product.oldPrice, product.price) }}%
+        </span>
+      </div>
+        <div class="stock" [ngClass]="{ 'low-stock': product.quantity < 10 }">
+          Stock: {{ product.quantity }}
+        </div>
+      </div>
+
+      
+
+<button class="add-to-cart" (click)="addToCart(product.id)">Add to cart</button>
+    </div>
+
+  </div>
+</div>
