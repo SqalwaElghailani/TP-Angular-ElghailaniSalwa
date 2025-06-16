@@ -1,1 +1,67 @@
-<p>home works!</p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MangaExpress - Votre marketplace de manga</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+<body>
+    <!-- Barre de navigation supérieure -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="left-section">
+                <span>Bienvenue sur MangaExpress</span>
+            </div>
+            <div class="right-section">
+                <a href="#"><i class="fas fa-headset"></i> Service Client</a>
+                <a href="#"><i class="fas fa-truck"></i> Suivi Commande</a>
+                <a href="#"><i class="fas fa-user"></i> Mon Compte</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header principal -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo" >
+                <h1 href="/home">Manga<span>Express</span></h1>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Rechercher des mangas, tomes, figurines...">
+                <button><i class="fas fa-search"></i> Rechercher</button>
+            </div>
+            
+            <div class="header-actions">
+                <a href="#" class="wishlist"><i class="far fa-heart"></i> Favoris</a>
+                <a href="/card" class="cart">
+                    <i class="fas fa-shopping-cart"></i> Panier
+                    <span class="cart-count">{{ cartCount }}</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation par catégories -->
+    <nav class="category-nav">
+        <div class="container">
+          <!--  <a href="#" class="category-link"><i class="fas fa-bars"></i> Toutes les catégories</a>-->
+            <a href="#" class="category-link">Shonen</a>
+            <a href="#" class="category-link">Shojo</a>
+            <a href="#" class="category-link">Seinen</a>
+            <a href="#" class="category-link">Figurines</a>
+            <a href="#" class="category-link">Goodies</a>
+            <a href="#" class="category-link">Promotions</a>
+            <a href="#" class="category-link">Nouveautés</a>
+        </div>
+    </nav>
+
+    
+
+  
+
+    
+</body>
+</html>
