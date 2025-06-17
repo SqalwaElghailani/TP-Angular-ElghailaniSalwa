@@ -235,6 +235,36 @@
     margin-top: 20px;
   }
 }
+.product-card.selected {
+  border: 2px solid green;
+  background-color: #f0fff0;
+  transition: 0.3s;
+}
+
+
+.buy-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.buy-button button {
+  background-color: #28a745; /* أخضر جذاب */
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buy-button button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
 
 
 

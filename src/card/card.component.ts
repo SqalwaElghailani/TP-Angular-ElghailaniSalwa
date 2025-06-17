@@ -3,32 +3,30 @@ import { Component, Input, OnInit, Inject } from '@angular/core';
 import { CardService } from '../app/services/card.service';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { SharedDataService } from '../app/services/shared-data.service';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  @Input() product!: any;  // Le "!" indique que product sera défini par Angular
-
+  @Input() product!: any;
   cartProducts: any[] = [];
-  isLoading: boolean = true; 
+  isLoading: boolean = true;
   userId: number | null = null;
-  
+
   constructor(
+    private sharedDataService: SharedDataService,
+    private router: Router,
     private http: HttpClient,
     private cartService: CardService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
-
-  
-  
-
- 
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -44,10 +42,9 @@ export class CardComponent implements OnInit {
 
   loadCart() {
     if (!this.userId) return;
-    
+
     this.cartService.getUserCart(this.userId).subscribe({
       next: (data) => {
-        console.log('Cart items:', data);
         this.cartProducts = data;
         this.isLoading = false;
       },
@@ -85,5 +82,48 @@ export class CardComponent implements OnInit {
       return 0;
     }
     return Math.round(((oldPrice - price) / oldPrice) * 100);
+  }
+
+ proceedToBuy() {
+    if (!this.userId) {
+      alert("⛔ Vous devez vous connecter.");
+      return;
+    }
+
+    const selectedProducts = this.cartProducts.filter(p => p.selected);
+
+    if (selectedProducts.length === 0) {
+      alert("⛔ Vous devez sélectionner au moins un produit.");
+      return;
+    }
+
+    // Sauvegarde dans le service + localStorage
+    this.sharedDataService.setSelectedProducts(selectedProducts, this.userId);
+
+    // Navigation avec state (au cas où)
+    this.router.navigate(['/commende'], {
+      state: { selectedProducts, userId: this.userId }
+    });
+  }
+
+
+
+buySelected(): void {
+  const selectedProducts = this.cartProducts.filter(p => p.selected);
+
+  if (selectedProducts.length === 0) {
+    alert("Veuillez sélectionner au moins un produit.");
+    return;
+  }
+
+  // حفظ المعلومات مؤقتًا في localStorage
+  localStorage.setItem('selectedProducts', JSON.stringify(selectedProducts));
+
+  // توجيه المستخدم إلى صفحة /commende
+  this.router.navigate(['/commende']);
+}
+
+  hasSelectedItems(): boolean {
+    return this.cartProducts && this.cartProducts.some(p => p.selected);
   }
 }
