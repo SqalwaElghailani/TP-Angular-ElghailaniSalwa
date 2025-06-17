@@ -14,7 +14,8 @@
       <p class="quantity" [style.color]="product.quantity < 10 ? 'red' : 'green'">
         Stock : {{ product.quantity }}
       </p>
-      <button i18n>Acheter</button>
+      
+      <button [routerLink]="['/commende',product.id]" i18n>Acheter</button>
     </div>
   </div>
 </div>

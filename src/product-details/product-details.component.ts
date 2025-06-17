@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Product } from '../app/models/product.model';
 import { ProductService } from '../app/services/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute ,Router, RouterModule} from '@angular/router';
+
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe],
+  imports: [CommonModule, CurrencyPipe, RouterModule],
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
@@ -15,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   product?: Product;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private productService: ProductService
   ) {}
@@ -30,4 +32,7 @@ export class ProductDetailsComponent implements OnInit {
       );
     }
   }
+  acheterProduit(productId: number) {
+  this.router.navigate(['/commende'], { queryParams: { productId } });
+}
 }
