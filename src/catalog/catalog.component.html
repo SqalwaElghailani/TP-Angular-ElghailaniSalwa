@@ -1,7 +1,7 @@
 <!-- PRODUITS RECOMMANDÉS - FULL BACKGROUND -->
 <div 
   class="top-banner"
-  *ngIf="topProducts.length > 0"
+  *ngIf="topProducts.length > 0" 
   [ngStyle]="{
     'background-image': 'url(' + (topProducts[activeTopIndex].imageUrl || 'assets/default-product.png') + ')'
   }"
