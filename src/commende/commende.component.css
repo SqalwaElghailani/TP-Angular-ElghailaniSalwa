@@ -1,0 +1,52 @@
+/* commende.component.css */
+
+.commande-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.product-info {
+  margin-bottom: 20px;
+}
+
+.commande-form .form-group {
+  margin-bottom: 15px;
+}
+
+.commande-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.commande-form input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  margin-top: 10px;
+  color: red;
+  font-weight: bold;
+}
