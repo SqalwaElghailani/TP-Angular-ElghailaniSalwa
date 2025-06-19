@@ -6,6 +6,7 @@ import { HomeComponent } from '../home/home.component';
 import { SignupComponent } from '../signup/signup.component';
 import { CardComponent } from '../card/card.component';
 import { CommendeComponent } from '../commende/commende.component';
+import { MesCommandesComponent } from '../mes-commandes/mes-commandes.component';
 
 export const routes: Routes = [
     {path : 'home', component : HomeComponent, title: 'My Catalog products'},
@@ -17,6 +18,7 @@ export const routes: Routes = [
    
     {path : 'signin', component : SigninComponent, title: 'My signin page'},
     {path : 'signup', component : SignupComponent, title: 'My signin page'},
+    {path: 'mes-commandes',component: MesCommandesComponent},
     {path : '', redirectTo : '/Catalog', pathMatch : 'full'},
     
 
