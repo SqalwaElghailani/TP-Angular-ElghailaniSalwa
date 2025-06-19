@@ -48,10 +48,10 @@ export class CommendeComponent implements OnInit {
 
       // تعيين كمية 1 بشكل مبدئي لكل منتج
       this.selectedProducts.forEach(p => {
-        if (!p.quantity) {
-          p.quantity = 1;
-        }
-      });
+  if (!p.quantity || p.quantity < 1) {
+    p.quantity = 1;
+  }
+});
     }
   }
 
@@ -85,7 +85,7 @@ export class CommendeComponent implements OnInit {
       .subscribe({
         next: (response) => {
           alert('✅ Commande enregistrée avec succès !');
-          //this.router.navigate(['/mes-commandes']);
+          this.router.navigate(['/mes-commandes']);
         },
         error: (err) => {
           this.errorMessage = `Erreur technique: ${err.status} - ${err.message}`;

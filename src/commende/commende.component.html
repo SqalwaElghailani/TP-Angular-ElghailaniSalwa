@@ -5,8 +5,14 @@
       {{ produit.name }} - {{ produit.price }} MAD
       <label>
         Quantité: 
-        <input type="number" min="1" [(ngModel)]="selectedProducts[i].quantity" name="quantity{{i}}" required>
-      </label>
+        <input
+  type="number"
+  min="1"
+  [(ngModel)]="selectedProducts[i].quantity"
+  name="quantity{{i}}"
+  (ngModelChange)="selectedProducts[i].quantity = selectedProducts[i].quantity < 1 ? 1 : selectedProducts[i].quantity"
+  required>
+</label>
     </li>
   </ul>
 
