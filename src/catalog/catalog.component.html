@@ -1,25 +1,25 @@
 <!-- PRODUITS RECOMMANDÉS - FULL BACKGROUND -->
 <div 
   class="top-banner"
-  *ngIf="topProducts.length > 0" 
+  *ngIf="filteredTopProducts.length > 0" 
   [ngStyle]="{
-    'background-image': 'url(' + (topProducts[activeTopIndex].imageUrl || 'assets/default-product.png') + ')'
+    'background-image': 'url(' + (filteredTopProducts[activeTopIndex].imageUrl || 'assets/default-product.png') + ')'
   }"
 >
   <div class="top-banner-overlay">
     <div class="top-banner-content">
       <!-- Image sur la gauche -->
       <div class="left-side">
-        <img [src]="topProducts[activeTopIndex].imageUrl || 'assets/default-product.png'" alt="Manga" />
+        <img [src]="filteredTopProducts[activeTopIndex].imageUrl || 'assets/default-product.png'" alt="Manga" />
       </div>
 
       <!-- Infos à droite -->
       <div class="right-side">
-        <h2>{{ topProducts[activeTopIndex].name }}</h2>
-        <p class="genre">Type: {{ topProducts[activeTopIndex].genre }}</p>
-        <p class="summary">{{ topProducts[activeTopIndex].description }}</p>
+        <h2>{{ filteredTopProducts[activeTopIndex].name }}</h2>
+        <p class="genre">Type: {{ filteredTopProducts[activeTopIndex].genre }}</p>
+        <p class="summary">{{ filteredTopProducts[activeTopIndex].description }}</p>
         <p class="price">
-          {{ topProducts[activeTopIndex].price | currency:'EUR' }}
+          {{ filteredTopProducts[activeTopIndex].price | currency:'EUR' }}
         </p>
 
         <div class="navigation-buttons">
@@ -37,7 +37,7 @@
 
 
 <div class="products-grid">
-  <div class="product-card" *ngFor="let product of products" >
+  <div class="product-card" *ngFor="let product of filteredProducts" >
 
   
 

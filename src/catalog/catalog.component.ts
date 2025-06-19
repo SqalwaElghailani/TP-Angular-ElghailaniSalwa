@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { Product } from '../app/models/product.model';
@@ -15,9 +15,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
-
+  searchTerm: string = '';
   products: Product[] = [];
   topProducts: Product[] = [];
+  filteredProducts: Product[] = [];
+  filteredTopProducts: Product[] = []; 
   activeTopIndex = 0;
   selectedProductId: number | null = null;
  Math = Math;
@@ -28,21 +30,45 @@ export class CatalogComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
+
+   ngOnInit(): void {
     this.productService.getProducts().subscribe(
-       products => {
+      products => {
         this.products = products;
         this.topProducts = products.filter(p => p.rating >= 9);
-        
-      },
-      error => console.error('erreur :', error),
-      
-    );
 
-    this.route.queryParams.subscribe(params => {
-      const id = params['product'];
-      this.selectedProductId = id ? +id : null;
-    });
+        // بعد تحميل المنتجات، نخدم الفلترة حسب param de recherche
+        this.route.queryParams.subscribe(params => {
+          this.searchTerm = params['search'] || '';
+          this.filterProducts();
+        });
+      },
+      error => console.error('Erreur :', error)
+    );
+  
+
+   
+  }
+ 
+
+  private filterProducts() {
+    if (!this.searchTerm) {
+      this.filteredProducts = [...this.products];
+      this.filteredTopProducts = [...this.topProducts];
+    } else {
+      const term = this.searchTerm.toLowerCase();
+      this.filteredProducts = this.products.filter(product =>
+        product.name.toLowerCase().includes(term)
+      );
+      
+      this.filteredTopProducts = this.topProducts.filter(product =>
+        product.name.toLowerCase().includes(term)
+      );
+      
+      if (this.filteredTopProducts.length > 0) {
+        this.activeTopIndex = 0;
+      }
+    }
   }
   nextTopProduct() {
     this.activeTopIndex = (this.activeTopIndex + 1) % this.topProducts.length;

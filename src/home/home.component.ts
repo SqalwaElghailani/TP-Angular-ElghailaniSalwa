@@ -1,19 +1,28 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID, Input } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { CardService } from '../app/services/card.service';
+import { Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ProductService } from '../app/services/product.service';
+
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   cartCount: number = 0;
+  searchTerm: string = '';
+  products: any[] = [];
 
   constructor(
+      private router: Router,
     private cartService: CardService,
+    private productService: ProductService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -26,6 +35,21 @@ export class HomeComponent implements OnInit {
         });
       }
     }
+
+    this.productService.getProducts().subscribe(data => {
+      this.products = data;
+    });
+  }
+
+  
+  onSearchSubmit() {
+    if (this.searchTerm.trim()) {
+      this.router.navigate(['/Catalog'], {
+        queryParams: { search: this.searchTerm }
+      });
+    }
+  }
+  onSearchChange() {
+    console.log('Recherche:', this.searchTerm);
   }
 }
-
