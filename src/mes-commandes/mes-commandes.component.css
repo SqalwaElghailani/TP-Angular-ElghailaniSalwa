@@ -1,0 +1,69 @@
+.commande-card {
+  max-width: 600px;
+  margin: 1.5rem auto; /* centrer horizontalement */
+  padding: 1.5rem 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.commande-card h4 {
+  color: #2980b9;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+  color: #333;
+}
+
+.product-name {
+  flex: 3;
+  text-align: center;
+}
+
+.product-qty {
+  flex: 1;
+  text-align: center;
+  color: #666;
+}
+
+.product-price {
+  flex: 1;
+  text-align: center;
+  color: #2ecc71;
+  font-weight: 600;
+}
+
+/* Style bouton annuler */
+.btn-annuler {
+  display: block;  /* باش ياخذ سطر كامل */
+  margin: 0 auto;  /* margin auto على اليمين واليسار */
+  padding: 0.3rem 0.8rem;
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  max-width: 150px; /* تعطيه عرض محدود باش margin auto تخدم */
+}
+
+
+.btn-annuler:hover {
+  background-color: #c0392b;
+}

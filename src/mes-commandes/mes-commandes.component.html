@@ -1,0 +1,23 @@
+<div *ngFor="let commande of commandes" class="commande-card">
+
+  <p><strong>Date :</strong> {{ commande.date | date:'medium' }}</p>
+  <p><strong>Status :</strong> {{ commande.status }}</p>
+  <p><strong>Total :</strong> {{ commande.totalPrice | currency:'EUR' }}</p>
+
+  <h4>Produits :</h4>
+  <ul>
+    <li *ngFor="let p of commande.products" class="product-item">
+      <span class="product-name">{{ p.name }}</span>
+      <span class="product-qty">{{ p.quantity }}x</span>
+      <span class="product-price">{{ p.price | currency:'EUR' }}</span>
+
+     
+      
+    </li>
+  </ul>
+  <button *ngIf="commande.status === 'en attente'" 
+              (click)="annulerProduit(commande.id)" 
+              class="btn-annuler">
+        Annuler
+      </button>
+</div>
