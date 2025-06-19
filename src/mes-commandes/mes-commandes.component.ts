@@ -19,7 +19,7 @@ export class MesCommandesComponent implements OnInit {
     if (userId) {
       this.http.get<any[]>(`http://localhost:3000/api/commandes/${userId}`).subscribe(
         data => {
-          this.commandes = data;
+        this.commandes = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
         },
         error => {
           console.error('Erreur lors du chargement des commandes', error);
@@ -31,7 +31,7 @@ export class MesCommandesComponent implements OnInit {
     // Charge les commandes (à adapter selon ta méthode)
     const userId = Number(localStorage.getItem('userId'));
     this.http.get<any[]>(`http://localhost:3000/api/commandes/user/${userId}`).subscribe(data => {
-      this.commandes = data;
+    this.commandes = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     });
   }
 
