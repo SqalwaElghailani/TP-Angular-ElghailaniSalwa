@@ -20,6 +20,9 @@ export class CatalogComponent implements OnInit {
   topProducts: Product[] = [];
   filteredProducts: Product[] = [];
   filteredTopProducts: Product[] = []; 
+  genres: string[] = [];
+  selectedGenre: string = '';
+
   activeTopIndex = 0;
   selectedProductId: number | null = null;
  Math = Math;
@@ -36,10 +39,11 @@ export class CatalogComponent implements OnInit {
       products => {
         this.products = products;
         this.topProducts = products.filter(p => p.rating >= 9);
-
+        this.genres = Array.from(new Set(products.map(p => p.genre))).filter(Boolean);
         // بعد تحميل المنتجات، نخدم الفلترة حسب param de recherche
         this.route.queryParams.subscribe(params => {
           this.searchTerm = params['search'] || '';
+           this.selectedGenre = params['genre'] || '';
           this.filterProducts();
         });
       },
@@ -51,25 +55,43 @@ export class CatalogComponent implements OnInit {
   }
  
 
-  private filterProducts() {
-    if (!this.searchTerm) {
-      this.filteredProducts = [...this.products];
-      this.filteredTopProducts = [...this.topProducts];
-    } else {
-      const term = this.searchTerm.toLowerCase();
-      this.filteredProducts = this.products.filter(product =>
-        product.name.toLowerCase().includes(term)
-      );
-      
-      this.filteredTopProducts = this.topProducts.filter(product =>
-        product.name.toLowerCase().includes(term)
-      );
-      
-      if (this.filteredTopProducts.length > 0) {
-        this.activeTopIndex = 0;
-      }
-    }
+private filterProducts() {
+  let filtered = [...this.products];
+
+  if (this.searchTerm) {
+    const term = this.searchTerm.toLowerCase();
+    filtered = filtered.filter(product =>
+      product.name.toLowerCase().includes(term)
+    );
   }
+
+  if (this.selectedGenre) {
+    filtered = filtered.filter(product => product.genre === this.selectedGenre);
+  }
+
+  this.filteredProducts = filtered;
+  this.filteredTopProducts = this.topProducts.filter(product =>
+    (!this.searchTerm || product.name.toLowerCase().includes(this.searchTerm.toLowerCase())) &&
+    (!this.selectedGenre || product.genre === this.selectedGenre)
+  );
+}
+selectGenre(genre: string) {
+  this.router.navigate([], {
+    relativeTo: this.route,
+    queryParams: { genre },
+    queryParamsHandling: 'merge'
+  });
+}
+
+clearGenre() {
+  this.router.navigate([], {
+    relativeTo: this.route,
+    queryParams: { genre: null },
+    queryParamsHandling: 'merge'
+  });
+}
+
+
   nextTopProduct() {
     this.activeTopIndex = (this.activeTopIndex + 1) % this.topProducts.length;
   }

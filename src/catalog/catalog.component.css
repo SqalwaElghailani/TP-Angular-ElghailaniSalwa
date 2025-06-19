@@ -243,3 +243,36 @@
 
 
 
+
+
+
+
+
+
+
+/* Category Navigation */
+.category-nav {
+    background-color: #333;
+    padding: 12px 0;
+}
+
+.category-nav .container {
+    display: flex;
+     padding-left: 10%;
+}
+
+.category-link {
+    color: white;
+    margin-right: 35px;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+   
+}
+
+.category-link:hover {
+    color: var(--secondary);
+}
+
+.category-link i {
+    margin-right: 5px;
+}

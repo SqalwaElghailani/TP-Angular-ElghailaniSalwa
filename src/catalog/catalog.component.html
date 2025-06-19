@@ -1,4 +1,24 @@
-<!-- PRODUITS RECOMMANDÉS - FULL BACKGROUND -->
+<nav class="category-nav">
+  <div class="container">
+    <a
+      *ngFor="let genre of genres" 
+      (click)="selectGenre(genre)" 
+      [class.active]="genre === selectedGenre"
+      class="category-link"
+    >
+      {{ genre }}
+  </a>
+
+    <a
+      *ngIf="selectedGenre" 
+      (click)="clearGenre()" 
+      class="category-link clear"
+    >
+      Tous
+</a>
+  </div>
+</nav>
+
 <div 
   class="top-banner"
   *ngIf="filteredTopProducts.length > 0" 
