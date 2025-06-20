@@ -76,38 +76,65 @@ Principaux objectifs :
 ---
 ## Fonctionnalités implémentées
 
-### Catalogue interactif
-- Affichage des produits avec filtrage (genre, disponibilité)
+##Catalogue interactif
+L'interface épurée présente les mangas phares comme "Attack on Titan" et "Death Note" sous forme de cartes visuelles avec prix et indicateur de stock. La barre de recherche centrale et le filtre par genres (Action, Fantaisie...) permettent une navigation intuitive.
 ![alt text](public/assets/images/catalog-1.png)
+---
 ![alt text](public/assets/images/catalog-2.png)
-![alt text](public/assets/images/catalog-genre.png)
-- Système de recherche dynamique
+
+### Fiche Produit
+Page de détail complète avec image haute résolution, synopsis détaillé, informations techniques (genre, prix) et indicateur de stock coloré (rouge si <10 unités).
+![alt text](public/assets/images/detail-1.png)
+---
+![alt text](public/assets/images/detail-2.png)
+### Recherche Dynamique 
+Fonctionnalité de recherche en temps réel permettant de filtrer les mangas par titre ou caractéristiques, avec résultats instantanés.
 ![alt text](public/assets/images/catalog-rech-1.png)
 ![alt text](public/assets/images/catalog-rech-11.png)
-- Style conditionnel pour les produits en faible stock (<10 unités)
-![alt text](public/assets/images/detail-1.png)
-![alt text](public/assets/images/detail-2.png)
+### Filtres par Genre 
+Système de filtrage multicritère organisé par tags (Action, Drame, Mystère...) pour une exploration thématique des collections.
+- Affichage des produits avec filtrage (genre, disponibilité)
+![alt text](public/assets/images/catalog-genre.png)
 
-### Gestion utilisateur
-- Inscription et connexion sécurisées
+## Gestion Utilisateur
+### Connexion 
+Formulaire minimaliste avec validation des champs (email/mot de passe) et gestion des erreurs, incluant un lien vers l'inscription.
 ![alt text](public/assets/images/signin-1.png)
+### Messages d'Erreur 
+Feedback utilisateur clair pour les erreurs de connexion (identifiants invalides, champs requis), avec indication visuelle des champs problématiques.
+
+### Inscription 
+Processus d'enregistrement sécurisé avec validation en temps réel des données saisies (format email, complexité du mot de passe).
 ![alt text](public/assets/images/signup.png)
+### Déconnection
 ![alt text](public/assets/images/logout.png)
-- Espace personnel avec historique des commandes
-### Processus d'achat
-- Panier modifiable avec sélection multiple
+
+## Processus d'Achat
+
+### Panier 
 ![alt text](public/assets/images/card.png)
-![alt text](public/assets/images/card-selected.png)
-- Finalisation de commande avec suivi
-- Calcul automatique des totaux
+Interface interactive permettant :
+- La sélection/désélection par double-clic
+- ![alt text](public/assets/images/card-selected.png)
+- Visualisation des articles choisis
+- Calcul automatique du montant total
+- Bouton de validation vers la commande
+
+### Finalisation Commande 
+Formulaire de livraison avec :
+- Récapitulatif des produits
+- Saisie des coordonnées (adresse, téléphone)
+- Validation sécurisée
 ![alt text](public/assets/images/commende.png)
-### Administration
-- Visualisation des commandes en attente
-- Possibilité d'annulation des commandes
+### Historique 
+Tableau chronologique des commandes avec :
+- Statut (en attente/validé)
+- Détails des achats
+- Option d'annulation
+- Panier modifiable avec sélection multiple
 ![alt text](public/assets/images/mes commende.png)
 
 
----
 
 
 
