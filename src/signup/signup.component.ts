@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -19,7 +20,7 @@ export class SignupComponent {
   successMessage = '';
   errorMessage = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient ,private router: Router) {}
 
   onSignup() {
     const user = {
@@ -35,6 +36,10 @@ export class SignupComponent {
         this.successMessage = 'Inscription réussie';
         this.errorMessage = '';
         this.resetForm();
+        setTimeout(() => {
+        this.router.navigate(['/signin']);
+      }, 2000);
+    
       },
       error: err => {
         this.successMessage = '';
