@@ -2,38 +2,246 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="3782598945742573357" datatype="html">
-        <source>La liste des Produits</source>
-        <target>Product List</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/catalog/catalog.component.html</context>
-          <context context-type="linenumber">2,3</context>
-        </context-group>
+      <trans-unit id="6153391124478010951" datatype="html">
+        <source> Stock: <x id="INTERPOLATION" equiv-text="{{ item.quantity }}"/> </source>
+        <target> Stock: <x id="INTERPOLATION" equiv-text="{{ item.quantity }}"/> </target>
       </trans-unit>
-      <trans-unit id="6238982061557878341" datatype="html">
-        <source>Bonjour!</source>
-        <target>Hello!</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/home/home.component.html</context>
-          <context context-type="linenumber">1,2</context>
-        </context-group>
+
+      <trans-unit id="8456210966300435586" datatype="html">
+        <source>📅 Ajouté le : <x id="INTERPOLATION" equiv-text="{{ item.date | date:&apos;medium&apos; }}"/></source>
+        <target>📅 Added on: <x id="INTERPOLATION" equiv-text="{{ item.date | date:'medium' }}"/></target>
       </trans-unit>
-      <trans-unit id="1048895743677949299" datatype="html">
-        <source>Détails du produit</source>
-        <target>Product Details</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/product-details/product-details.component.html</context>
-          <context context-type="linenumber">3,4</context>
-        </context-group>
+
+      <trans-unit id="220505039593509425" datatype="html">
+        <source>Acheter la sélection</source>
+        <target>Buy Selected</target>
       </trans-unit>
-      <trans-unit id="3000503124039226277" datatype="html">
-        <source>Acheter</source>
-        <target>Buy</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/product-details/product-details.component.html</context>
-          <context context-type="linenumber">14,15</context>
-        </context-group>
+
+      <trans-unit id="2894836579124613128" datatype="html">
+        <source> Tous </source>
+        <target> All </target>
       </trans-unit>
-    </body>
-  </file>
-</xliff>
+
+      <trans-unit id="3793295545382392499" datatype="html">
+        <source> Type: <x id="INTERPOLATION" equiv-text="{{ filteredTopProducts[activeTopIndex].genre }}"/> </source>
+        <target> Type: <x id="INTERPOLATION" equiv-text="{{ filteredTopProducts[activeTopIndex].genre }}"/> </target>
+      </trans-unit>
+
+      <trans-unit id="1515726108082755991" datatype="html">
+        <source>⬅ Précédent</source>
+        <target>⬅ Previous</target>
+      </trans-unit>
+
+      <trans-unit id="6590731632781305084" datatype="html">
+        <source>Suivant ➡</source>
+        <target>Next ➡</target>
+      </trans-unit>
+
+      <trans-unit id="6492937435856655320" datatype="html">
+        <source>Ajouter au panier</source>
+        <target>Add to cart</target>
+      </trans-unit>
+
+      <trans-unit id="3721107792718462612" datatype="html">
+        <source>Produits sélectionnés :</source>
+        <target>Selected products:</target>
+      </trans-unit>
+
+      <trans-unit id="5988871933490790766" datatype="html">
+        <source> Quantité : <x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;number&quot; min=&quot;1&quot; [(ngModel)]=&quot;selectedProducts[i].quantity&quot; name=&quot;quantity{{i}}&quot; (ngModelChange)=&quot;selectedProducts[i].quantity = selectedProducts[i].quantity &lt; 1 ? 1 : selectedProducts[i].quantity&quot; required &gt;"/></source>
+        <target> Quantity: <x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input type=&quot;number&quot; min=&quot;1&quot; [(ngModel)]=&quot;selectedProducts[i].quantity&quot; name=&quot;quantity{{i}}&quot; (ngModelChange)=&quot;selectedProducts[i].quantity = selectedProducts[i].quantity &lt; 1 ? 1 : selectedProducts[i].quantity&quot; required &gt;"/></target>
+      </trans-unit>
+
+      <trans-unit id="5108524801246253576" datatype="html">
+        <source>Prix total : <x id="INTERPOLATION" equiv-text="{{ calculerPrixTotal() | number:&apos;1.2-2&apos; }}"/> MAD</source>
+        <target>Total price: <x id="INTERPOLATION" equiv-text="{{ calculerPrixTotal() | number:'1.2-2' }}"/> MAD</target>
+      </trans-unit>
+
+      <trans-unit id="3092775843287290086" datatype="html">
+        <source>Adresse :</source>
+        <target>Address:</target>
+      </trans-unit>
+
+      <trans-unit id="7533563242085862241" datatype="html">
+        <source>Téléphone :</source>
+        <target>Phone:</target>
+      </trans-unit>
+
+      <trans-unit id="6265933665472260179" datatype="html">
+        <source>Confirmer la commande</source>
+        <target>Confirm order</target>
+      </trans-unit>
+
+      <trans-unit id="740466266829078348" datatype="html">
+        <source>Aucun produit sélectionné.</source>
+        <target>No products selected.</target>
+      </trans-unit>
+
+      <trans-unit id="4314449351005089036" datatype="html">
+        <source>MangaExpress - Votre marketplace de manga</source>
+        <target>MangaExpress - Your manga marketplace</target>
+      </trans-unit>
+
+      <trans-unit id="6065572510907443025" datatype="html">
+        <source>Bienvenue sur MangaExpress</source>
+        <target>Welcome to MangaExpress</target>
+      </trans-unit>
+
+      <trans-unit id="2941636411097803392" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fas fa-headset&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Service Client</source>
+        <target><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fas fa-headset&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Customer Service</target>
+      </trans-unit>
+
+      <trans-unit id="6481139335975916087" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fas fa-truck&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Suivi Commande</source>
+        <target><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;fas fa-truck&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> Order Tracking</target>
+      </trans-unit>
+
+      <trans-unit id="7823543696966155687" datatype="html">
+        <source>Mon Compte</source>
+        <target>My Account</target>
+      </trans-unit>
+
+      <trans-unit id="6497544826155835104" datatype="html">
+        <source>Se déconnecter</source>
+        <target>Log out</target>
+      </trans-unit>
+
+      <trans-unit id="5534601732972813050" datatype="html">
+        <source>Rechercher des mangas, tomes, figurines...</source>
+        <target>Search for mangas, volumes, figurines...</target>
+      </trans-unit>
+
+      <trans-unit id="5829380065548494521" datatype="html">
+        <source>Rechercher</source>
+        <target>Search</target>
+      </trans-unit>
+
+      <trans-unit id="4296453940322449362" datatype="html">
+        <source>Mes Commandes</source>
+        <target>My Orders</target>
+      </trans-unit>
+
+      <trans-unit id="4123744616703386227" datatype="html">
+        <source>Panier</source>
+        <target>Cart</target>
+      </trans-unit>
+
+      <trans-unit id="8828388190644044387" datatype="html">
+        <source>Date :</source>
+        <target>Date:</target>
+      </trans-unit>
+
+      <trans-unit id="7479565082416886618" datatype="html">
+        <source>Statut :</source>
+        <target>Status:</target>
+      </trans-unit>
+
+      <trans-unit id="4602896896635567393" datatype="html">
+        <source>Total :</source>
+        <target>Total:</target>
+      </trans-unit>
+
+      <trans-unit id="560415900146545814" datatype="html">
+        <source>Produits :</source>
+        <target>Products:</target>
+      </trans-unit>
+
+      <trans-unit id="5036641628193411364" datatype="html">
+        <source> Annuler </source>
+        <target> Cancel </target>
+      </trans-unit>
+
+      <trans-unit id="3907818826913075322" datatype="html">
+        <source>Auteur :</source>
+        <target>Author:</target>
+      </trans-unit>
+
+      <trans-unit id="7290599055397412129" datatype="html">
+        <source>Genre :</source>
+        <target>Genre:</target>
+      </trans-unit>
+
+      <trans-unit id="3812087815212508628" datatype="html">
+        <source>Note :</source>
+        <target>Rating:</target>
+      </trans-unit>
+
+      <trans-unit id="8394634185320946420" datatype="html">
+        <source>Nombre de chapitres :</source>
+        <target>Number of chapters:</target>
+      </trans-unit>
+
+      <trans-unit id="2816946626039388152" datatype="html">
+        <source>Stock :</source>
+        <target>Stock:</target>
+      </trans-unit>
+
+      <trans-unit id="7919452934138804929" datatype="html">
+        <source>Se connecter</source>
+        <target>Sign in</target>
+      </trans-unit>
+
+      <trans-unit id="3053022756258517667" datatype="html">
+        <source>Adresse e-mail</source>
+        <target>Email address</target>
+      </trans-unit>
+
+      <trans-unit id="5229230953864990876" datatype="html">
+        <source>L&apos;email est requis</source>
+        <target>Email is required</target>
+      </trans-unit>
+
+      <trans-unit id="2805701865773885642" datatype="html">
+        <source>Le format de l&apos;email est invalide</source>
+        <target>Invalid email format</target>
+      </trans-unit>
+
+      <trans-unit id="5249891717669571568" datatype="html">
+        <source>Mot de passe</source>
+        <target>Password</target>
+      </trans-unit>
+
+      <trans-unit id="7859972859244558391" datatype="html">
+        <source>Le mot de passe est requis</source>
+        <target>Password is required</target>
+      </trans-unit>
+
+      <trans-unit id="553850633311032139" datatype="html">
+        <source> Connexion </source>
+        <target> Sign in </target>
+      </trans-unit>
+
+      <trans-unit id="524267847785043623" datatype="html">
+        <source> Erreur de connexion !! Veuillez réessayer. </source>
+        <target> Sign in error!! Please try again. </target>
+      </trans-unit>
+
+      <trans-unit id="6331349548322521128" datatype="html">
+         <source> Vous n’avez pas de compte ? <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;/signup&quot;&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span &gt;"/>Créer un compte<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></source>
+        <target> Don’t have an account? <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;/signup&quot;&gt;"/><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span &gt;"/>Create an account<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></target>
+</trans-unit>
+<trans-unit id="8203024106711668685">
+  <source>First Name</source>
+  <target>Prénom</target>
+</trans-unit>
+<trans-unit id="5363451304863092478">
+  <source>Last Name</source>
+  <target>Nom</target>
+</trans-unit>
+<trans-unit id="4768749765465246664">
+  <source>Email</source>
+  <target>Email</target>
+</trans-unit>
+<trans-unit id="1847466303514167048">
+  <source>Create Account</source>
+  <target>Créer un compte</target>
+</trans-unit>
+<trans-unit id="4524516638244876783">
+  <source>Sign Up</source>
+  <target>S'inscrire</target>
+</trans-unit>
+<trans-unit id="187187500641108332">
+  <source>{$INTERPOLATION}</source>
+  <target>{$INTERPOLATION}</target>
+</trans-unit>

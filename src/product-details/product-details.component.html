@@ -5,17 +5,21 @@
     <div class="detail-info">
       <h3>{{ product.name }}</h3>
       <p class="description">{{ product.description }}</p>
-      <p><strong>Auteur :</strong> {{ product.author }}</p>
-      <p><strong>Genre :</strong> {{ product.genre }}</p>
-      <p><strong>Note :</strong> {{ product.rating }}</p>
-      <p><strong>Nombre de chapitres :</strong> {{ product.chapters }}</p>
+      
+      <p><strong i18n>Auteur :</strong> {{ product.author }}</p>
+      <p><strong i18n>Genre :</strong> {{ product.genre }}</p>
+      <p><strong i18n>Note :</strong> {{ product.rating }}</p>
+      <p><strong i18n>Nombre de chapitres :</strong> {{ product.chapters }}</p>
+      
       <p class="full-summary">{{ product.fullSummary }}</p>
+      
       <p class="price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+      
       <p class="quantity" [style.color]="product.quantity < 10 ? 'red' : 'green'">
-        Stock : {{ product.quantity }}
+        <span i18n>Stock :</span> {{ product.quantity }}
       </p>
       
-      <button [routerLink]="['/commende',product.id]" i18n>Acheter</button>
+      <!--<button [routerLink]="['/commende',product.id]" i18n>Acheter</button>-->
     </div>
   </div>
 </div>

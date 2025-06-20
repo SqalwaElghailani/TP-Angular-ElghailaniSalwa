@@ -1,81 +1,85 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MangaExpress - Votre marketplace de manga</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title i18n>MangaExpress - Votre marketplace de manga</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Barre de navigation supérieure -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="left-section">
-                <span>Bienvenue sur MangaExpress</span>
-            </div>
-            <div class="right-section">
-                <a href="#"><i class="fas fa-headset"></i> Service Client</a>
-                <a href="#"><i class="fas fa-truck"></i> Suivi Commande</a>
-                <a *ngIf="authService.isLoggedIn()" (click)="toggleCompte()" class="account-link">
-                 <i class="fas fa-user"></i> Mon Compte
-                </a>
-                
-        </div>
+
+  <!-- Barre de navigation supérieure -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="left-section">
+        <span i18n>Bienvenue sur MangaExpress</span>
+      </div>
+      <div class="right-section">
+        <a href="#" i18n><i class="fas fa-headset"></i> Service Client</a>
+        <a href="#" i18n><i class="fas fa-truck"></i> Suivi Commande</a>
+        <a *ngIf="authService.isLoggedIn()" (click)="toggleCompte()" class="account-link">
+          <i class="fas fa-user"></i> <span i18n>Mon Compte</span>
+        </a>
+      </div>
     </div>
-
-<!-- ✅ Affichage des infos utilisateur au centre de la page -->
-<div *ngIf="showCompte" class="compte-popup">
-  <div class="compte-box">
-    <h2>{{ authService.getUser()?.firstName }} {{ authService.getUser()?.lastName }}</h2>
-    <h2>{{ authService.getUser()?.email }}</h2>
-    <button (click)="logout()">Se déconnecter</button>
   </div>
-</div>
-    <!-- Header principal -->
-    <header class="main-header">
-        <div class="container">
-            <div class="logo" >
-                <h1 href="/home">Manga<span>Express</span></h1>
-            </div>
-            
-            <div class="search-bar">
-                  <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher des mangas, tomes, figurines..."
-                       (keydown.enter)="onSearchSubmit()" />
-  <button (click)="onSearchSubmit()"><i class="fas fa-search"></i> Rechercher</button>
-            </div>
-            
-            <div class="header-actions">
-               
-    <!-- <a href="#" class="wishlist"><i class="far fa-heart"></i> Favoris</a>-->
-    <a routerLink="/mes-commandes" class="wishlist"> Mes Commende</a>
 
-                <a href="/card" class="cart">
-                    <i class="fas fa-shopping-cart"></i> Panier
-                    <span class="cart-count">{{ cartCount }}</span>
-                </a>
-            </div>
-        </div>
-    </header>
+  <!-- ✅ Affichage des infos utilisateur au centre de la page -->
+  <div *ngIf="showCompte" class="compte-popup">
+    <div class="compte-box">
+      <h2>{{ authService.getUser()?.firstName }} {{ authService.getUser()?.lastName }}</h2>
+      <h2>{{ authService.getUser()?.email }}</h2>
+      <button (click)="logout()" i18n>Se déconnecter</button>
+    </div>
+  </div>
 
-    <!-- Navigation par catégories 
-    <nav class="category-nav">
-        <div class="container">
-            <a href="#" class="category-link"><i class="fas fa-bars"></i> Toutes les catégories</a>
-            <a href="#" class="category-link">Shonen</a>
-            <a href="#" class="category-link">Shojo</a>
-            <a href="#" class="category-link">Seinen</a>
-            <a href="#" class="category-link">Figurines</a>
-            <a href="#" class="category-link">Goodies</a>
-            <a href="#" class="category-link">Promotions</a>
-            <a href="#" class="category-link">Nouveautés</a>
-        </div>
-    </nav>
+  <!-- Header principal -->
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <h1 routerLink="/home">Manga<span>Express</span></h1>
+      </div>
 
-    -->
+      <div class="search-bar">
+        <input type="text" [(ngModel)]="searchTerm" 
+               placeholder="Rechercher des mangas, tomes, figurines..." 
+               i18n-placeholder 
+               (keydown.enter)="onSearchSubmit()" />
+        <button (click)="onSearchSubmit()">
+          <i class="fas fa-search"></i> <span i18n>Rechercher</span>
+        </button>
+      </div>
 
-  
-<!--
-<app-catalog [searchTerm]="searchTerm"></app-catalog>-->
-    
+      <div class="header-actions">
+        <a routerLink="/mes-commandes" class="wishlist" i18n>Mes Commandes</a>
 
+        <a href="/card" class="cart">
+          <i class="fas fa-shopping-cart"></i> <span i18n>Panier</span>
+          <span class="cart-count">{{ cartCount }}</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation par catégories (désactivée) -->
+  <!--
+  <nav class="category-nav">
+    <div class="container">
+      <a href="#" class="category-link"><i class="fas fa-bars"></i> <span i18n>Toutes les catégories</span></a>
+      <a href="#" class="category-link" i18n>Shonen</a>
+      <a href="#" class="category-link" i18n>Shojo</a>
+      <a href="#" class="category-link" i18n>Seinen</a>
+      <a href="#" class="category-link" i18n>Figurines</a>
+      <a href="#" class="category-link" i18n>Goodies</a>
+      <a href="#" class="category-link" i18n>Promotions</a>
+      <a href="#" class="category-link" i18n>Nouveautés</a>
+    </div>
+  </nav>
+  -->
+
+  <!--
+  <app-catalog [searchTerm]="searchTerm"></app-catalog>
+  -->
+
+</body>
+</html>

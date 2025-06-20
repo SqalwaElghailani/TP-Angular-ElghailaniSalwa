@@ -7,12 +7,16 @@
       [class.selected]="item.selected"
     >
       <div class="product-image" [routerLink]="['/product-details', item.id]">
-        <img [src]="item.imageUrl ? 'assets/images/' + item.imageUrl : 'assets/default-product.png'" alt="{{ item.name }}" />
+        <img 
+          [src]="item.imageUrl ? 'assets/images/' + item.imageUrl : 'assets/default-product.png'" 
+          [alt]="item.name" 
+        />
         <div class="image-hover-summary">{{ item.description }}</div>
       </div>
 
       <div class="product-info">
         <h3 class="product-title">{{ item.name }}</h3>
+
         <div class="product-meta">
           <div class="price">
             <span class="current-price">{{ item.price | currency:'EUR' }}</span>
@@ -21,16 +25,18 @@
               -{{ getDiscount(item.oldPrice, item.price) }}%
             </span>
           </div>
-          <div class="stock" [ngClass]="{ 'low-stock': item.quantity < 10 }">
+
+          <div class="stock" [ngClass]="{ 'low-stock': item.quantity < 10 }" i18n>
             Stock: {{ item.quantity }}
           </div>
         </div>
-        <p>📅 Added on: {{ item.date | date:'medium' }}</p>
+
+        <p i18n>📅 Ajouté le : {{ item.date | date:'medium' }}</p>
       </div>
     </div>
   </div>
 
   <div class="buy-button" *ngIf="hasSelectedItems()">
-    <button type="button" (click)="proceedToBuy()">Buy Selected</button>
+    <button type="button" (click)="proceedToBuy()" i18n>Acheter la sélection</button>
   </div>
 </form>

@@ -7,15 +7,16 @@
       class="category-link"
     >
       {{ genre }}
-  </a>
+    </a>
 
     <a
       *ngIf="selectedGenre" 
       (click)="clearGenre()" 
       class="category-link clear"
+      i18n
     >
       Tous
-</a>
+    </a>
   </div>
 </nav>
 
@@ -28,7 +29,7 @@
 >
   <div class="top-banner-overlay">
     <div class="top-banner-content">
-      <!-- Image sur la gauche -->
+      <!-- Image à gauche -->
       <div class="left-side">
         <img [src]="filteredTopProducts[activeTopIndex].imageUrl || 'assets/default-product.png'" alt="Manga" />
       </div>
@@ -36,63 +37,58 @@
       <!-- Infos à droite -->
       <div class="right-side">
         <h2>{{ filteredTopProducts[activeTopIndex].name }}</h2>
-        <p class="genre">Type: {{ filteredTopProducts[activeTopIndex].genre }}</p>
-        <p class="summary">{{ filteredTopProducts[activeTopIndex].description }}</p>
+        <p class="genre" i18n>
+          Type: {{ filteredTopProducts[activeTopIndex].genre }}
+        </p>
+        <p class="summary">
+          {{ filteredTopProducts[activeTopIndex].description }}
+        </p>
         <p class="price">
           {{ filteredTopProducts[activeTopIndex].price | currency:'EUR' }}
         </p>
 
         <div class="navigation-buttons">
-          <button class="nav-btn" (click)="prevTopProduct()">⬅ Back</button>
-          <button class="nav-btn" (click)="nextTopProduct()">Next ➡</button>
+          <button class="nav-btn" (click)="prevTopProduct()" i18n>⬅ Précédent</button>
+          <button class="nav-btn" (click)="nextTopProduct()" i18n>Suivant ➡</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
-
-
-
-
 <div class="products-grid">
-  <div class="product-card" *ngFor="let product of filteredProducts" >
-
-  
+  <div class="product-card" *ngFor="let product of filteredProducts">
 
     <!-- Image + Hover Summary -->
     <div class="product-image" [routerLink]="['/product-details', product.id]">
       <img [src]="product.imageUrl || 'assets/default-product.png'" [alt]="product.name">
 
-      <!-- Overlay داخل الصورة فقط -->
+      <!-- Survol résumé -->
       <div class="image-hover-summary">
         {{ product.description }}
       </div>
     </div>
 
-    <!-- باقي المعلومات تظل ظاهرة -->
+    <!-- Infos -->
     <div class="product-info">
       <h3 class="product-title">{{ product.name }}</h3>
 
       <div class="product-meta">
-       
+
         <div class="price">
-        <span class="current-price">{{ product.price | currency:'EUR' }}</span>
-        <span *ngIf="product.oldPrice" class="old-price">{{ product.oldPrice | currency:'EUR' }}</span>
-        <span *ngIf="product.oldPrice" class="discount">
-          -{{ getDiscount(product.oldPrice, product.price) }}%
-        </span>
-      </div>
-        <div class="stock" [ngClass]="{ 'low-stock': product.quantity < 10 }">
+          <span class="current-price">{{ product.price | currency:'EUR' }}</span>
+          <span *ngIf="product.oldPrice" class="old-price">{{ product.oldPrice | currency:'EUR' }}</span>
+          <span *ngIf="product.oldPrice" class="discount">
+            -{{ getDiscount(product.oldPrice, product.price) }}%
+          </span>
+        </div>
+
+        <div class="stock" [ngClass]="{ 'low-stock': product.quantity < 10 }" i18n>
           Stock: {{ product.quantity }}
         </div>
       </div>
 
-      
-
-<button class="add-to-cart" (click)="addToCart(product.id)">Add to cart</button>
+      <button class="add-to-cart" (click)="addToCart(product.id)" i18n>Ajouter au panier</button>
     </div>
-
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="container">
   <form #signInForm="ngForm" class="form" (ngSubmit)="signIn()">
    
-    <div class="sign-in" >ce connecter</div>
+    <div class="sign-in" i18n>Se connecter</div>
     
     <input
       name="email"
@@ -9,31 +9,40 @@
       email
       #email="ngModel"
       [(ngModel)]="credentials.email"
-      placeholder="Email Address"
+      placeholder="Adresse e-mail"
       type="email"
       autofocus
+      i18n-placeholder
     />
-    <em class="error" *ngIf="email.errors?.['required'] && email.touched">Email is required</em>
-    <em class="error" *ngIf="email.errors?.['email'] && email.touched">Must be a valid email format</em>
+    <em class="error" *ngIf="email.errors?.['required'] && email.touched" i18n>L'email est requis</em>
+    <em class="error" *ngIf="email.errors?.['email'] && email.touched" i18n>Le format de l'email est invalide</em>
 
     <input
       name="password"
       required
       #password="ngModel"
       [(ngModel)]="credentials.password"
-      placeholder="Password"
+      placeholder="Mot de passe"
       type="password"
+      i18n-placeholder
     />
-    <em class="error" *ngIf="password.invalid && password.touched">Password is required</em>
+    <em class="error" *ngIf="password.invalid && password.touched" i18n>Le mot de passe est requis</em>
 
     <div class="buttons">
-      <button type="submit" [disabled]="signInForm.form.invalid" class="button cta">
-        Sign In
+      <button type="submit" [disabled]="signInForm.form.invalid" class="button cta" i18n>
+        Connexion
       </button>
     </div>
 
-    <div class="signInError" *ngIf="signInError">
-      Sign In Error !!. Please try again.
+    <div class="signInError" *ngIf="signInError" i18n>
+      Erreur de connexion !! Veuillez réessayer.
     </div>
+
+    <!-- Lien vers la page d'inscription -->
+    <div class="signup-link" style="margin-top: 10px;" i18n>
+  Vous n’avez pas de compte ?
+  <a href="/signup"><span >Créer un compte</span></a>
+</div>
+
   </form>
 </div>

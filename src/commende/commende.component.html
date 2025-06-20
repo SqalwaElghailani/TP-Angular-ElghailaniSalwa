@@ -1,36 +1,40 @@
 <div *ngIf="selectedProducts.length > 0; else noProducts">
-  <h2>Produits sélectionnés :</h2>
+  <h2 i18n>Produits sélectionnés :</h2>
+
   <ul>
     <li *ngFor="let produit of selectedProducts; let i = index">
       {{ produit.name }} - {{ produit.price }} MAD
-      <label>
-        Quantité: 
+      <label i18n>
+        Quantité : 
         <input
-  type="number"
-  min="1"
-  [(ngModel)]="selectedProducts[i].quantity"
-  name="quantity{{i}}"
-  (ngModelChange)="selectedProducts[i].quantity = selectedProducts[i].quantity < 1 ? 1 : selectedProducts[i].quantity"
-  required>
-</label>
+          type="number"
+          min="1"
+          [(ngModel)]="selectedProducts[i].quantity"
+          name="quantity{{i}}"
+          (ngModelChange)="selectedProducts[i].quantity = selectedProducts[i].quantity < 1 ? 1 : selectedProducts[i].quantity"
+          required
+        >
+      </label>
     </li>
   </ul>
 
-  <p><strong>Prix total: {{ calculerPrixTotal() | number:'1.2-2' }} MAD</strong></p>
+  <p><strong i18n>Prix total : {{ calculerPrixTotal() | number:'1.2-2' }} MAD</strong></p>
 
   <form (ngSubmit)="confirmerCommande()" #commandeForm="ngForm">
-    <label for="adresse">Adresse :</label>
+    <label for="adresse" i18n>Adresse :</label>
     <input type="text" id="adresse" [(ngModel)]="adresse" name="adresse" required>
 
-    <label for="telephone">Téléphone :</label>
+    <label for="telephone" i18n>Téléphone :</label>
     <input type="text" id="telephone" [(ngModel)]="telephone" name="telephone" required>
 
-    <button type="submit" [disabled]="commandeForm.invalid">Confirmer la commande</button>
+    <button type="submit" [disabled]="commandeForm.invalid" i18n>Confirmer la commande</button>
   </form>
 
-  <div *ngIf="errorMessage" style="color:red;">{{ errorMessage }}</div>
+  <div *ngIf="errorMessage" style="color:red;">
+    {{ errorMessage }}
+  </div>
 </div>
 
 <ng-template #noProducts>
-  <p>Aucun produit sélectionné.</p>
+  <p i18n>Aucun produit sélectionné.</p>
 </ng-template>

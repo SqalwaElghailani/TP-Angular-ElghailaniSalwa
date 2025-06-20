@@ -21,8 +21,14 @@ export class AuthService {
       if (userData) {
         this.currentUser = JSON.parse(userData);
       }
+      if (typeof window !== 'undefined') {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+  }
+  return null;
     }
     return this.currentUser;
+     
   }
 
 logout() {
