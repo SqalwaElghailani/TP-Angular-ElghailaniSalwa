@@ -56,16 +56,23 @@ Principaux objectifs :
 - `CatalogComponent` : Affichage et filtrage des produits
 - `ProductDetailsComponent` : Fiche détaillée d'un manga
 - `CartComponent` : Gestion du panier
-
+- `CommendeComponent` : Saisie des informations personnelles et confirmation finale de la commande.
+- `MesCommandesComponent` :Affichage de l’historique des commandes d’un utilisateur connecté.
+- `SigninComponent` :Formulaire de connexion utilisateur.
+- `SignupComponent` : Formulaire d’inscription d’un nouvel utilisateur.
 ---
 ## Services :
 - `AuthService` : Gestion de l'authentification
-
+- `cardService` :Gère les opérations liées au panier (ajout, suppression, totalisation).
+- `CommandeService` :Envoie les commandes vers l’API, récupération de l’historique, annulation de
+- `ProductService` :Fournit les données des mangas (depuis un mock ou une API).
+- `SharedDataService` :Partage de données entre composants (ex : données du panier, utilisateur
+- `UserService` :Gère les opérations liées aux utilisateurs (profil, commandes associées, etc.).
 ---
 
 ## Modèles :
  - `Product`: Interface ou classe définissant les propriétés d'un produit (id, nom, prix, quantité, etc.).
- 
+ - `user`: Représente un utilisateur avec : id, nom, email, motDePasse, adresse, téléphone, etc.
 ---
 ## Fonctionnalités implémentées
 
