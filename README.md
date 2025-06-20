@@ -76,7 +76,7 @@ Principaux objectifs :
 ---
 ## Fonctionnalités implémentées
 
-##Catalogue interactif
+## Catalogue interactif
 L'interface épurée présente les mangas phares comme "Attack on Titan" et "Death Note" sous forme de cartes visuelles avec prix et indicateur de stock. La barre de recherche centrale et le filtre par genres (Action, Fantaisie...) permettent une navigation intuitive.
 ![alt text](public/assets/images/catalog-1.png)
 ---
