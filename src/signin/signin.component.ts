@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { User } from '../app/models/user.model';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../app/services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -17,11 +18,12 @@ export class SigninComponent {
   credentials: Partial<User> = { email: '', password: '' };
   signInError: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router,private authService: AuthService) {}
 
   signIn() {
     this.http.post<any>('http://localhost:3000/api/signin', this.credentials).subscribe({
       next: (res) => {
+        this.authService.login(res.user); 
         console.log("Connexion réussie", res.user);
 
         // خزن userId ف localStorage (تأكد من اسم الحقل في الرد)

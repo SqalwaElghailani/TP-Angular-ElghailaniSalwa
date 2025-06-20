@@ -4,6 +4,7 @@ import { CardService } from '../app/services/card.service';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../app/services/product.service';
+import { AuthService } from '../app/services/auth.service';
 
 
 
@@ -18,11 +19,13 @@ export class HomeComponent implements OnInit {
   cartCount: number = 0;
   searchTerm: string = '';
   products: any[] = [];
+  showCompte = false;
 
   constructor(
       private router: Router,
     private cartService: CardService,
     private productService: ProductService,
+    public authService: AuthService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -41,7 +44,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  
+   toggleCompte() {
+    this.showCompte = !this.showCompte;
+  }
   onSearchSubmit() {
     if (this.searchTerm.trim()) {
       this.router.navigate(['/Catalog'], {
@@ -51,5 +56,9 @@ export class HomeComponent implements OnInit {
   }
   onSearchChange() {
     console.log('Recherche:', this.searchTerm);
+  }
+   logout() {
+    this.authService.logout(); 
+    this.router.navigate(['/signin']); 
   }
 }

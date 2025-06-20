@@ -22,7 +22,7 @@ export class AppComponent {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         // هنا كتخبي app-home فصفحات login مثلاً
-        this.showHomeComponent = !['/home', '/signin'].includes(event.url);
+        this.showHomeComponent = !['/home'].includes(event.url);
       }
     });
   }

@@ -25,13 +25,14 @@ export class AuthService {
     return this.currentUser;
   }
 
-  // تسجيل الخروج
-  logout() {
-    this.currentUser = null;
-    localStorage.removeItem('user');
-  }
+logout() {
+  this.currentUser = null;
+  localStorage.removeItem('user');
+  localStorage.removeItem('userId'); 
+}
 
-  // التأكد واش المستخدم داخل
+
+  
   isLoggedIn(): boolean {
     return this.getUser() !== null;
   }
