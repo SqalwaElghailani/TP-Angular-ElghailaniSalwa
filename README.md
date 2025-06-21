@@ -94,6 +94,7 @@ Fonctionnalité de recherche en temps réel permettant de filtrer les mangas par
 ### Filtres par Genre 
 Système de filtrage multicritère organisé par tags (Action, Drame, Mystère...) pour une exploration thématique des collections.
 - Affichage des produits avec filtrage (genre, disponibilité)
+
 ![alt text](public/assets/images/catalog-genre.png)
 
 ## Gestion Utilisateur
@@ -115,7 +116,7 @@ Processus d'enregistrement sécurisé avec validation en temps réel des donnée
 ![alt text](public/assets/images/card.png)
 Interface interactive permettant :
 - La sélection/désélection par double-clic
-- ![alt text](public/assets/images/card-selected.png)
+![alt text](public/assets/images/card-selected.png)
 - Visualisation des articles choisis
 - Calcul automatique du montant total
 - Bouton de validation vers la commande
@@ -132,7 +133,7 @@ Tableau chronologique des commandes avec :
 - Détails des achats
 - Option d'annulation
 - Panier modifiable avec sélection multiple
-![alt text](public/assets/images/mes commende.png)
+![alt text](public/assets/images/mes-commende.png)
 
 
 
